@@ -4,7 +4,7 @@ A simple express server API for get create and update Todos
 
 all the data stored in-memory without and DB
 
-## run the server
+## Run the server
 ```bash
 # clone the project
 $ git clone https://github.com/ShlomyTuby/todo-app-server.git
