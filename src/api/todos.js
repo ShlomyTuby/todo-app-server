@@ -12,9 +12,13 @@ router.get("/", (req, res) => {
   return res.json(todos);
 });
 
-router.get("/:id", (req, res) => {
-  const { id } = req.params;
-  const todo = todoService.getById(id);
+/**
+ * get single todo by todo_id
+ * GET /todos/:todo_id
+ */
+router.get("/:todo_id", (req, res) => {
+  const { todo_id } = req.params;
+  const todo = todoService.getById(todo_id);
   return res.json(todo);
 });
 
@@ -33,12 +37,12 @@ router.post("/", (req, res) => {
 });
 
 /**
- * delete todo
- * DELETE /todos/:id
+ * delete todo by todo_id
+ * DELETE /todos/:todo_id
  */
-router.delete("/:id", (req, res) => {
-  const { id } = req.params;
-  const todo = todoService.deleteTodo(id);
+router.delete("/:todo_id", (req, res) => {
+  const { todo_id } = req.params;
+  const todo = todoService.deleteTodo(todo_id);
   if (todo) {
     res.json({
       success: true,
@@ -52,13 +56,12 @@ router.delete("/:id", (req, res) => {
 
 /**
  * Update a todo item by id
- * @param string id
- * the todo id
+ * PATCH /todos/:todo_id
  */
-router.patch("/:id", (req, res) => {
-  const { id } = req.params;
+router.patch("/:todo_id", (req, res) => {
+  const { todo_id } = req.params;
   const { text, completed } = req.body;
-  const todo = todoService.update({ id, text, completed });
+  const todo = todoService.update({ id: todo_id, text, completed });
   if (todo) {
     res.json({
       success: true,
