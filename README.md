@@ -4,6 +4,21 @@ A simple express server API for get create and update Todos
 
 all the data stored in-memory without and DB
 
+## run the server
+```bash
+# clone the project
+$ git clone https://github.com/ShlomyTuby/todo-app-server.git
+# instal npm dependecies
+$ cd todo-app-serve
+$ nvm install && nvm exec npm install
+# for production mode
+$ npm start
+# for dev mode (nodemon)
+$ npm run dev
+# for unit test mode (required to kill the running app first)
+$ npm run test
+```
+
 Existing routes:
 
 ### Get all todos
