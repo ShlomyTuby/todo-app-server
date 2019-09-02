@@ -6,8 +6,8 @@
   "scripts": {
     "start": "PORT=3002 node index.js",
     "dev": "PORT=3002 node_modules/.bin/nodemon -w src",
-    "test": "concurrently \"npm start\" \"npm run jest\"",
-    "jest": "PORT=3002 node_modules/.bin/jest",
+    "test": "npm run jest",
+    "jest": "PORT=3002 CI=true node_modules/.bin/jest --testPathIgnorePatterns=util/*",
     "jest:dev": "PORT=3002 node_modules/.bin/jest --watchAll"
   },
   "keywords": [],
@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "babel-jest": "^24.9.0",
-    "concurrently": "^4.1.2",
     "jest": "^24.9.0",
     "nodemon": "^1.19.1",
     "whatwg-fetch": "^3.0.0"

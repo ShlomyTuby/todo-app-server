@@ -1,4 +1,20 @@
 import jest from "jest";
+import { runServer, stopServer } from "./util/run-server";
+
+if (process.env.CI == "true") {
+  beforeAll(function(done) {
+    runServer(serverProcess => {
+      console.log('server is up')
+      global.runningProcess = serverProcess;
+      done();
+    });
+  });
+
+  afterAll(function() {
+    stopServer(global.runningProcess);
+  });
+}
+
 const port = process.env.PORT || 3000;
 const baseUrl = `http://localhost:${port}`;
 
